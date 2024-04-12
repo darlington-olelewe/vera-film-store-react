@@ -1,0 +1,14 @@
+.loading{
+    border: 6px solid #f3f3f3; /* Border for the circle */
+    border-radius: 50%; /* Make it a circle */
+    border-top-color: #3498db; /* Color for the spinning part */
+    width: 50px; /* Size of the loader */
+    height: 50px;
+    animation: spin 1s linear infinite; /* Animation for spinning */
+    margin: 50px auto; /* Center the loader */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

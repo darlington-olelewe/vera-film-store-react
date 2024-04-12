@@ -1,0 +1,11 @@
+
+
+
+.main_layout{
+    max-width: 1200px;
+    background-color: white;
+    min-height: 90vh;
+    margin: 0 auto;
+    padding: 10px;
+    overflow: scroll;
+}
