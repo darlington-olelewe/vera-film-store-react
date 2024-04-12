@@ -1,12 +1,13 @@
 import "./vera-store.css"
 import {Loading, MainLayout, StickyHeader} from "./_components";
+import {HomePage} from "./pages";
 function VeraStore() {
 
   return (
     <div className={"background"}>
         <StickyHeader/>
           <MainLayout>
-                <Loading/>
+                <HomePage/>
           </MainLayout>
     </div>
   )

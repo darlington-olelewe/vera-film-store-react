@@ -4,16 +4,27 @@ import {useDispatch,useSelector} from "react-redux";
 import {filmConstants} from "../../_constants";
 const {
     SET_NAV,
-    SET_CONTENT_TYPE
+    SET_CONTENT_TYPE,
+    SET_SEARCH
 } = filmConstants
 
 export const StickyHeader =()=>{
     const dispatch = useDispatch();
     const data = useSelector(({filmState})=> filmState)
     const navOpen = data.isNavOpen;
+    const search = data.search;
+    const contentType = data.contentType
 
     const toggleNav=(value:boolean)=>{
         dispatch({type:SET_NAV, payload: value})
+    }
+
+    const setSearch=(value:string)=>{
+        dispatch({type:SET_SEARCH,payload:value})
+    }
+
+    const setContentType=(value:string)=>{
+        dispatch({type:SET_CONTENT_TYPE,payload:value})
     }
 
 
@@ -46,10 +57,10 @@ export const StickyHeader =()=>{
 
                     <span className="material-symbols-outlined search_icon">search</span>
                     <input
-                        placeholder={"Search film by title"}
+                        placeholder={`Search film by ${search}`}
                     />
 
-                    <select>
+                    <select value={search} onChange={(e)=>setSearch(e.target.value)}>
                         <option value={'title'}>Title</option>
                         <option value={'director'}>Director</option>
                         <option value={'year'}>Year</option>
@@ -58,7 +69,7 @@ export const StickyHeader =()=>{
             </div>
 
 
-                <select className={style.media_type}>
+                <select className={style.media_type} value={contentType} onChange={ e => setContentType(e.target.value)}>
                     <option value={'json'}>JSON</option>
                     <option value={'xml'}>XML</option>
                     <option value={'text'}>TEXT</option>

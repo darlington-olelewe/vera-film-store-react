@@ -1,9 +1,19 @@
+import {FilmCard} from "../../_components";
 
 
 export const HomePage=()=>{
 
     return (
-        <div>
+        <div style={{display: 'flex', flexWrap: "wrap"}}>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
+            <FilmCard/>
         </div>
     )
 }
