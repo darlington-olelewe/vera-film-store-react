@@ -1,0 +1,16 @@
+
+.button{
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: orange;
+    border: none;
+    color: white;
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+}
+
+.button:hover{
+    background-color: #efb752;
+}

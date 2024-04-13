@@ -1,5 +1,5 @@
-import * as axios from "axios";
-import {AxiosInstance} from "axios";
+import axios from "axios";
+
 const base = 'http://localhost:8080/api/v1/films'
 
 const header =(content: 'xml'|'json'|'text') =>{
@@ -29,7 +29,7 @@ const settings = (content: 'xml'|'json'|'text')=>{
     }
 }
 
-const instance: AxiosInstance = axios.create(settings('json'))
+const instance= axios.create(settings('json'))
 
 export const filmApi = {
     async get(url){

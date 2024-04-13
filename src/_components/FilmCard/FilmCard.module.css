@@ -1,24 +1,81 @@
 
 .container{
-    min-width: 305px;
+    min-width: 180px;
     margin: 4px;
-    height: 355px;
+    height: 200px;
     position: relative;
     box-shadow: 0 0 3px darkgray;
     border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container:nth-child(odd) {
+    margin-left: auto;
+}
+
+.container:nth-child(even) {
+    margin-right: auto;
+}
+.container:last-child:nth-child(odd) {
+    margin: 4px auto;
+}
+
+.video{
+    height: 110px;
+    border-bottom: solid 1px darkgray;
+}
+.img{
+    display: block;
+    height: 100%;
+    margin: 0 auto;
 }
 .film_card{
     position: absolute;
-    min-width: 305px;
-    width: 305px;
-    height: 355px;
+    min-width: 180px;
+    height: 200px;
     background: white;
+    border-radius: 5px;
 }
 
 .film_card:hover{
-    border-radius: 5px;
-    z-index: 9;
-    transform: scale(1.06);
-    box-shadow: 0 1px 0 black;
-    transition: transform 0.2s ease-in-out;
+
+    /*border-radius: 5px;*/
+    /*z-index: 9;*/
+    /*box-shadow: 0 0 1px black;*/
+    /*transition: transform 0.2s ease-in-out;*/
+}
+.title_year{
+    text-align: justify-all;
+    padding: 2px;
+    font-size: 16px;
+}
+.title{
+    font-weight: 700;
+
+}
+.year{
+    color: gray;
+}
+
+.director{
+    font-weight: 900;
+    font-size: 13px;
+    color: gray;
+    padding: 2px;
+}
+.star_holder{
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    line-height: 18px;
+}
+.rating{
+    display: block;
+    margin: 2px 0 0 10px;
+}
+.rating > img{
+    width: 15px;
 }
