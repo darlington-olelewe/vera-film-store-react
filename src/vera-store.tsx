@@ -1,5 +1,5 @@
 import "./vera-store.css"
-import {Loading, MainLayout, StickyHeader} from "./_components";
+import {MainLayout, StickyHeader} from "./_components";
 import {HomePage} from "./pages";
 function VeraStore() {
 

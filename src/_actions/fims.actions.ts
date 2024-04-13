@@ -8,15 +8,6 @@ const {
     FETCH_PAGINATED_FILMS,
     FETCHING_PAGINATED_FILMS
 } = filmConstants
-
-interface FetchPaginatedFilm{
-    type: FetchPaginatedFilm,
-    payload: Film[]
-}
-interface FetchingPaginatedFilm{
-    type: string,
-    payload: boolean | any
-}
 const fetchPaginatedFilms = ()=>{
     return  (dispatch: Dispatch )=> {
         dispatch({type:FETCHING_PAGINATED_FILMS, payload:true})
@@ -32,11 +23,14 @@ const fetchPaginatedFilms = ()=>{
                 }
             })
             .catch(e=>{
+                console.log(e)
                 dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
             })
 
     }
  }
+
+
 
  const filmActions = {
     fetchPaginatedFilms

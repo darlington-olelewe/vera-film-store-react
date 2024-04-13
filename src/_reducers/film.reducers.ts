@@ -1,4 +1,5 @@
 import {filmConstants} from "../_constants";
+import {InitialState} from "../_models/InitialState.ts";
 
 const {
     FETCH_PAGINATED_FILMS,
@@ -9,15 +10,13 @@ const {
 
 } = filmConstants
 
-const initialState = {
+const initialState :InitialState = {
     fetchingPaginatedFilms:false,
     paginatedFilms: [],
     isNavOpen: false,
-    search: 'title',
+    search: 'director',
     contentType: 'json'
 }
-
-
 
 function filmReducer(state = initialState, action : {type:string, payload:any}){
 

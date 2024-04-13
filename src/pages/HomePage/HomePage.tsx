@@ -1,7 +1,8 @@
-import {FilmCard} from "../../_components";
+import {FilmCard, Loading} from "../../_components";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {filmActions} from "../../_actions";
+import {Film} from "../../_models/Film.ts";
 
 
 export const HomePage=()=>{
@@ -10,22 +11,23 @@ export const HomePage=()=>{
 
     const data = useSelector(({filmState})=> filmState)
     const isLoading = data.fetchingPaginatedFilms;
-    const films = data.paginatedFilms;
+    const films : Film[]= data.paginatedFilms;
+    console.table(films)
     useEffect(()=>{
+        // @ts-ignore
         dispatch(fetchPaginatedFilms())
     },[dispatch])
 
+    if(isLoading){
+        return <Loading/>
+    }
+
     return (
         <div style={{display: 'flex', flexWrap: "wrap"}}>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
-            <FilmCard/>
+            {films.map(film => <FilmCard
+                key={film.id}
+                film={film}
+            />)}
         </div>
     )
 }

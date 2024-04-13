@@ -57,7 +57,7 @@ export const StickyHeader =()=>{
 
                     <span className="material-symbols-outlined search_icon">search</span>
                     <input
-                        placeholder={`Search film by ${search}`}
+                        placeholder={`search by ${search}`}
                     />
 
                     <select value={search} onChange={(e)=>setSearch(e.target.value)}>
