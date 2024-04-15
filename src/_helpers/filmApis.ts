@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Film} from "../_models/Film.ts";
 
-const base = 'http://192.168.0.194:8080/api/v1/films'
+const base = 'http://192.168.0.194:8080/api/v1'
 
 const header =(content: 'xml'|'json'|'text') =>{
 

@@ -21,7 +21,7 @@ export const FilmCard=({film}:{film:Film})=>{
                 <div className={style.video}>
                     <img src={play} className={style.img}/>
                 </div>
-                <div>
+                <div className={style.down}>
                     <p className={style.title_year}><span className={style.title}>{film.title}</span> <span
                         className={style.year}> - {film.year}</span></p>
                     <p className={style.director}>{film.director}</p>

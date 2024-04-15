@@ -12,3 +12,25 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+
+
+.btn_loading{
+    background-color: #efb752;
+    display: block;
+    padding: 15px;
+    width: 100%;
+    border: solid 1px darkorange;
+    border-radius: 4px;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.bt_load{
+    border: 3px solid rgba(190, 184, 174, 0.33); /* Border for the circle */
+    border-radius: 50%; /* Make it a circle */
+    border-top-color: white; /* Color for the spinning part */
+    width: 30px; /* Size of the loader */
+    height: 30px;
+    animation: spin 1s linear infinite; /* Animation for spinning */
+    margin:0 auto; /* Center the loader */
+}

@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    margin: 20px auto;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+}
+
+.current{
+    color: orange;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    border: solid 1px orange;
+}
+.active{
+    color: black;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+    border: solid 1px black;
+}
+.active:hover{
+    color: orange;
+    border: solid 1px orange;
+}
+.in_active{
+    color: gray;
+    border: solid 1px gray;
+    cursor: not-allowed;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3px;
+}

@@ -2,6 +2,7 @@ import style from "./StickyHeader.module.css"
 import {logo} from "../../_assets"
 import {useDispatch,useSelector} from "react-redux";
 import {filmConstants} from "../../_constants";
+import {useNavigate} from "react-router-dom";
 const {
     SET_NAV,
     SET_CONTENT_TYPE,
@@ -14,6 +15,8 @@ export const StickyHeader =()=>{
     const navOpen = data.isNavOpen;
     const search = data.search;
     const contentType = data.contentType
+
+    const navigate = useNavigate();
 
     const toggleNav=(value:boolean)=>{
         dispatch({type:SET_NAV, payload: value})
@@ -40,11 +43,11 @@ export const StickyHeader =()=>{
                             <div style={{display: "flex", justifyContent: "end"}}><span
                                 className="material-symbols-outlined close-icon" onClick={()=>toggleNav(false)}>close</span></div>
                             <menu>
-                                <ol className={style.ol}><span className="material-symbols-outlined">home</span>Home
+                                <ol className={style.ol} onClick={()=>navigate("/")} ><span className="material-symbols-outlined">home</span>Home
                                 </ol>
                                 <ol className={style.ol}><span className="material-symbols-outlined">person</span>Actors
                                 </ol>
-                                <ol className={style.ol}><span className="material-symbols-outlined">add</span>New</ol>
+                                <ol className={style.ol} onClick={()=>navigate("/new")}><span className="material-symbols-outlined">add</span>New</ol>
                             </menu>
                         </div>
 

@@ -79,3 +79,34 @@
 .rating > img{
     width: 15px;
 }
+
+@media screen and (min-width: 481px){
+    .container{
+            width: 230px;
+            height: 250px;
+    }
+
+    .film_card{
+        width: 230px;
+        height: 250px;
+    }
+
+    .video{
+        height: 130px;
+    }
+    .down{
+        padding: 12px 8px 5px 8px ;
+    }
+    .container:nth-child(odd) {
+        margin: 4px 10px;
+    }
+
+    .container:nth-child(even) {
+        margin: 4px 10px;
+    }
+    .container:last-child:nth-child(odd) {
+        margin: 4px 10px;
+    }
+
+}
+
