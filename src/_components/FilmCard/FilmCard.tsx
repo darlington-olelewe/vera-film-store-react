@@ -1,7 +1,14 @@
 import style from "./FilmCard.module.css"
 import {star, starDark, play} from "../../_assets";
 import {Film} from "../../_models/Film.ts";
+import {useNavigate} from "react-router";
 export const FilmCard=({film}:{film:Film})=>{
+
+    const navigate = useNavigate();
+
+    const navigateToSinglePage=(id:number):void=>{
+        navigate(`film/${id}`)
+    }
 
     const getStars=(value:number)=>{
         const stars = [];
@@ -17,7 +24,7 @@ export const FilmCard=({film}:{film:Film})=>{
 
     return(
         <div className={style.container}>
-            <div className={style.film_card}>
+            <div className={style.film_card} onClick={()=>navigateToSinglePage(film.id)}>
                 <div className={style.video}>
                     <img src={play} className={style.img}/>
                 </div>

@@ -70,8 +70,6 @@ export const Paginate=({appPage, changePage}:{appPage: AppPage, changePage:(num:
     const paginationArr: PaginationType[] = pageAlgo(appPage.currentPage, appPage.totalPage)
 
 
-    console.log(paginationArr)
-
 
     return <div>
         <div className={style.container}>

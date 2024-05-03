@@ -8,5 +8,8 @@ export type InitialState = {
     search: 'year' | 'title' | 'review' | 'director',
     contentType: 'json'| 'xml' | 'text',
     filmPage: AppPage,
-    creatingNewFilm:boolean
+    creatingNewFilm:boolean,
+    fetchingFilmById:boolean,
+    fetchFilmById:Film | null,
+    searchText:string
 }

@@ -6,6 +6,6 @@ export type ApiResponse <T> = {
 }
 
 export type Data <T> = {
-    records: T[],
+    records: T,
     appPage: AppPage
 }

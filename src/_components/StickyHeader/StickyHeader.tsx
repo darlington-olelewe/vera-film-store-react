@@ -3,10 +3,12 @@ import {logo} from "../../_assets"
 import {useDispatch,useSelector} from "react-redux";
 import {filmConstants} from "../../_constants";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useRef, useState} from "react";
 const {
     SET_NAV,
     SET_CONTENT_TYPE,
-    SET_SEARCH
+    SET_SEARCH,
+    SET_SEARCH_TEXT,
 } = filmConstants
 
 export const StickyHeader =()=>{
@@ -14,9 +16,15 @@ export const StickyHeader =()=>{
     const data = useSelector(({filmState})=> filmState)
     const navOpen = data.isNavOpen;
     const search = data.search;
+    const searchText = data.searchText;
     const contentType = data.contentType
 
+
     const navigate = useNavigate();
+
+    const toHome=()=>{
+        navigate("/")
+    }
 
     const toggleNav=(value:boolean)=>{
         dispatch({type:SET_NAV, payload: value})
@@ -25,10 +33,17 @@ export const StickyHeader =()=>{
     const setSearch=(value:string)=>{
         dispatch({type:SET_SEARCH,payload:value})
     }
+    const setSearchText=(value:string)=>{
+        dispatch({type:SET_SEARCH_TEXT,payload:value})
+    }
 
     const setContentType=(value:string)=>{
         dispatch({type:SET_CONTENT_TYPE,payload:value})
     }
+
+    useEffect(()=>{
+        toHome()
+    },[searchText])
 
 
     return (
@@ -61,6 +76,7 @@ export const StickyHeader =()=>{
                     <span className="material-symbols-outlined search_icon">search</span>
                     <input
                         placeholder={`search by ${search}`}
+                        onChange={(e)=>setSearchText(e.target.value)}
                     />
 
                     <select value={search} onChange={(e)=>setSearch(e.target.value)}>

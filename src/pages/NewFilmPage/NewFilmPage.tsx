@@ -1,7 +1,7 @@
+import style from "./NewFilmPage.module.css"
 import React, {FormEvent, useState} from "react";
 import {Film} from "../../_models";
 import {filmActions} from "../../_actions";
-import style from "./NewFilmPage.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {ButtonLoading} from "../../_components";
 import {useNavigate} from "react-router-dom";

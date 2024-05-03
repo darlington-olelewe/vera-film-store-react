@@ -12,7 +12,9 @@ const {
     FETCHING_PAGINATED_FILMS,
     ALL_FILM_PAGINATION,
     CREATE_NEW_FILM,
-    CREATING_NEW_FILM
+    CREATING_NEW_FILM,
+    FETCH_FILM_BY_ID,
+    FETCHING_FILM_BY_ID
 } = filmConstants
 const createNewFilm = (payload:Film, navigate:()=>void)=>{
     return (dispatch:Dispatch)=>{
@@ -32,6 +34,29 @@ const createNewFilm = (payload:Film, navigate:()=>void)=>{
 
     }
 }
+
+const fetchSingleFilmById=(id:string)=>{
+    return  (dispatch: Dispatch )=> {
+        dispatch({type:FETCHING_FILM_BY_ID, payload:true})
+        dispatch({type:FETCH_FILM_BY_ID, payload:null})
+        filmApi
+            .get(`films/${id}`)
+            .then(res => {
+                if(res.status === 200){
+                    const apiResponse: ApiResponse<Film> = res.data;
+                    dispatch({type:FETCHING_FILM_BY_ID, payload:false})
+                    dispatch({type:FETCH_FILM_BY_ID, payload:apiResponse.data})
+                }else{
+                    dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
+                }
+            })
+            .catch(e=>{
+                dispatch({type:FETCHING_FILM_BY_ID, payload:false})
+            })
+
+    }
+
+}
 const fetchPaginatedFilms = (query:string)=>{
     return  (dispatch: Dispatch )=> {
         dispatch({type:FETCHING_PAGINATED_FILMS, payload:true})
@@ -39,7 +64,7 @@ const fetchPaginatedFilms = (query:string)=>{
             .get(`films${query}`)
             .then(res => {
                 if(res.status === 200){
-                    const apiResponse: ApiResponse<Film> = res.data;
+                    const apiResponse: ApiResponse<Film[]> = res.data;
                     dispatch({type:FETCH_PAGINATED_FILMS, payload: apiResponse.data.records})
                     dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
                     dispatch({type: ALL_FILM_PAGINATION, payload: apiResponse.data.appPage})
@@ -55,10 +80,34 @@ const fetchPaginatedFilms = (query:string)=>{
     }
  }
 
+const deleteFilmById = (id:string)=>{
+    return  (dispatch: Dispatch )=> {
+        dispatch({type:FETCHING_PAGINATED_FILMS, payload:true})
+        filmApi
+            .get(`films/${id}`)
+            .then(res => {
+                if(res.status === 200){
+                    const apiResponse: ApiResponse<Film[]> = res.data;
+                    dispatch({type:FETCH_PAGINATED_FILMS, payload: apiResponse.data.records})
+                    dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
+                    dispatch({type: ALL_FILM_PAGINATION, payload: apiResponse.data.appPage})
+                }else{
+                    dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
+                }
+            })
+            .catch(e=>{
+                console.log(e)
+                dispatch({type:FETCHING_PAGINATED_FILMS, payload:false})
+            })
+
+    }
+}
+
 
 
  const filmActions = {
     fetchPaginatedFilms,
-     createNewFilm
+     createNewFilm,
+     fetchSingleFilmById
  }
  export default filmActions
