@@ -55,7 +55,7 @@ export const Paginate=({appPage, changePage}:{appPage: AppPage, changePage:(num:
             const pt:PaginationType = {
                 id: i,
                 text: i,
-                active: i >= curr && i <= total,
+                active: (i >= curr && i <= total) || (curr > i),
                 current: i === curr,
             }
             pageArr.push(pt)

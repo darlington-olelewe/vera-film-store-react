@@ -34,7 +34,7 @@ export const FilmCard=({film}:{film:Film})=>{
                     <p className={style.director}>{film.director}</p>
                     <div className={style.star_holder}>
                         stars:
-                        <span className={style.rating}>{getStars(film.stars).map((s, index) => <img
+                        <span className={style.rating}>{getStars(5).map((s, index) => <img
                             key={index} src={s} alt={"star icon"}/>)}</span>
                     </div>
                 </div>

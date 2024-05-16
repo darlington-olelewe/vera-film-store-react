@@ -22,7 +22,7 @@
     margin: 5px 0 10px 0;
     border: solid 1px darkgrey;
     border-radius: 4px;
-    outline-color: orange;
+    outline-color: #0174d8;
 }
 .img{
     display: block;
@@ -33,18 +33,18 @@
 }
 
 .btn{
-    background-color: #efb752;
+    background-color: #0174d8;
     display: block;
     padding: 15px;
     width: 100%;
-    border: solid 1px darkorange;
+    border: solid 1px #0174d8;
     border-radius: 4px;
     font-size: 18px;
     margin: 10px 0;
 }
 
 .btn:hover{
-    background-color: orange;
+    background-color: blue;
 }
 
 .flex{

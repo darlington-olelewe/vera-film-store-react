@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
 :root {
   /*font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
   /*line-height: 1.5;*/
@@ -39,5 +40,489 @@
 @media screen and (max-width: 480px) {
     .search_icon{
         display: none;
+    }
+}
+
+
+
+
+body {
+    font-family: 'Montserrat', 'sans-serif';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    color: #464646;
+    font-size: 12px;
+    font-weight: 400;
+    background: #eff2f7;
+    /* -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+.filter__panel {
+    background: transparent;
+    /* box-shadow: 0px 1px 4px rgba(173, 173, 173, 0.5); */
+    margin: 0px -12px;
+    padding-top: 12px;
+    border: none;
+}
+
+.agent__card {
+    border-radius: 4px;
+}
+
+.filter__panel_btn_wrapper {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex__row {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+label,
+.ant-form-item-children label {
+    color: #373a3c;
+    color: #02567b;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    display: block;
+    font-size: 80%;
+    letter-spacing: 0.05em;
+    /* font-weight: 600; */
+    margin: 0;
+}
+
+.ant-modal-title {
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.result__panel {
+    margin: 14px -12px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-title {
+    color: #373a3c;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.download__btn {
+    background-color: #ffffff;
+    color: #2d6da9;
+    border: 0.96px solid #2d6da9;
+    border-radius: 2.88px;
+    /* max-width: 174.63px; */
+    height: 30.7px;
+}
+
+.upload-status__btn {
+    background-color: #ffffff;
+    color: #2d6da9;
+    border: 0.96px solid #2d6da9;
+    border-radius: 2.88px;
+    height: 30.7px;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.mb-1 {
+    margin-bottom: 1em;
+}
+.mb-2 {
+    margin-bottom: 2em;
+}
+.mb-3 {
+    margin-bottom: 3em;
+}
+.mb-4 {
+    margin-bottom: 4em;
+}
+.ml-1 {
+    margin-left: 1em;
+}
+.ml-2 {
+    margin-left: 2em;
+}
+.ml-3 {
+    margin-left: 3em;
+}
+.ml-4 {
+    margin-left: 4em;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mt-1 {
+    margin-top: 1em;
+}
+.mt-1half {
+    margin-top: 1.56em;
+}
+.mt-2 {
+    margin-top: 2em;
+}
+.mt-3 {
+    margin-top: 3em;
+}
+.mt-4 {
+    margin-top: 4em;
+}
+
+.mx-1 {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.my-1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.py-1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.py-2 {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.py-3 {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+.px-3 {
+    padding-right: 1rem !important;
+}
+
+.px-2 {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.bg-white {
+    background-color: #fff !important;
+}
+
+/*
+==========
+OVERIDE ANTD STYLES
+==========
+*/
+
+/* Antd pagination button */
+.ant-pagination-item-active {
+    font-weight: 500;
+    border-color: transparent;
+    background: #0174d8 !important;
+}
+
+.ant-pagination-item-active a {
+    color: #ffffff !important;
+}
+
+.ant-pagination-item a {
+    color: #666666;
+}
+
+.ant-pagination-item {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    font-family: 'Roboto', sans-serif;
+    color: #666666;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+.ant-row-flex.ant-row-flex-end {
+    margin-bottom: 50px;
+}
+.agent__card .ant-card-body {
+    padding: 0 12px 12px 12px;
+}
+
+.ant-form-item-control,
+.ant-form-item-label {
+    line-height: 1.5;
+}
+
+.ant-btn-primary {
+    background-color: #0174d8;
+    border-color: #0174d8;
+    border-radius: 2.88px;
+}
+
+.ant-btn-primary.danger {
+    background-color: #ee312a;
+    border-color: #ee312a;
+    color: white;
+    border-radius: 2.88px;
+}
+.ant-btn-primary.danger:hover {
+    background-color: #f64e3f;
+    border-color: #f64e3f;
+    color: white;
+    border-radius: 2.88px;
+}
+.ant-col.ant-col-sm-24.ant-col-lg-24.ant-col-xl-24.ant-col-xxl-6 {
+    margin-bottom: 55px;
+}
+.ant-descriptions-title {
+    font-size: 12px;
+    color: #373a3c;
+    line-height: 14px;
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding-right: 15px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid #00bdf2;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    margin-left: 0;
+}
+.ant-descriptions-item-label {
+    color: #333;
+    font-size: small;
+}
+.segment {
+    font-size: 12px;
+    color: #373a3c;
+    line-height: 14px;
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding-right: 15px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid #00bdf2;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    margin-left: 0;
+}
+.segment-content {
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+    padding: 16px 24px;
+    border-radius: 4px;
+    color: #333;
+    /* css to add an automatic scroll once content exceeds 100px */
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 300px;
+}
+.ant-modal-close-x {
+    color: #fafafa;
+}
+.ant-modal-close-x:hover {
+    color: #fafafa;
+}
+
+.ant-table-thead {
+    /* color: #373a3c;
+    line-height: 17px;
+    font-size: 14px;
+    background: transparent;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 3em; */
+    color: #2f313f;
+    /* background-color: #dee4f880; */
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    border: none;
+    cursor: auto;
+    padding: 13px;
+}
+
+.ant-table-thead > tr > th {
+    background: #f2f2f2;
+}
+
+.data__table.performers-table__header .ant-table-thead > tr > th {
+    color: #02567b;
+    /* border-bottom: 2px solid #4a4a4a; */
+}
+
+.ant-table-tbody {
+    background-color: #ffffff;
+}
+
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+    padding: 16px 16px;
+    overflow-wrap: break-word;
+}
+
+.options-list {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    max-width: 100%;
+}
+/* .client_info {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 100%;
+} */
+.table-view__button {
+    background-color: rgba(1, 116, 216, 0.1);
+    border-radius: 3px;
+    background: none;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #0174d8;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    cursor: pointer;
+    /* margin-left: 20px; */
+    /* margin-right: -80px; */
+}
+
+.btn-height-40 {
+    min-height: 40px;
+}
+
+.table__tag,
+.evidence__tag {
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagelayout__content {
+    margin-top: 0;
+}
+.evidence__tag {
+    display: inline;
+    width: 100px;
+}
+
+.comment__lists .ant-list-item {
+    display: inherit !important;
+}
+
+.not__found {
+    max-width: 400px;
+    z-index: 2;
+    min-width: 300px;
+}
+
+.not__found h1 {
+    font-size: 10rem;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+
+.not__found .title {
+    color: rgba(0, 0, 0, 0.65);
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+}
+
+.text-warning {
+    color: #ffc106 !important;
+}
+
+.text-error {
+    color: #ff6051 !important;
+}
+
+.columns {
+    flex: 25%;
+}
+/* Add new Form */
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+form label {
+    font-size: 14px;
+    /* font-weight: bold; */
+    margin-bottom: 10px;
+}
+
+.ant-modal-header {
+    line-height: 30px;
+    padding: 14px 40px;
+    height: auto;
+    min-height: 30px;
+    /* background-color: #464646; */
+    background-color: #516b8a;
+}
+.ant-modal-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.emptyTab {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.filterbox {
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 10%);
+}
+
+@media only screen and (max-width: 768px) {
+    .pagelayout__content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .add_new__btn {
+        margin-right: 10px;
+        padding: 5px;
+    }
+
+    .ant-row-flex.ant-row-flex-space-between {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

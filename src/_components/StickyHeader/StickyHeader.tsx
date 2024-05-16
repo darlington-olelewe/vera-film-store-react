@@ -1,13 +1,11 @@
 import style from "./StickyHeader.module.css"
-import {logo} from "../../_assets"
 import {useDispatch,useSelector} from "react-redux";
 import {filmConstants} from "../../_constants";
 import {useNavigate} from "react-router-dom";
-import {useEffect, useRef, useState} from "react";
+import {useEffect} from "react";
 const {
     SET_NAV,
     SET_CONTENT_TYPE,
-    SET_SEARCH,
     SET_SEARCH_TEXT,
 } = filmConstants
 
@@ -15,7 +13,6 @@ export const StickyHeader =()=>{
     const dispatch = useDispatch();
     const data = useSelector(({filmState})=> filmState)
     const navOpen = data.isNavOpen;
-    const search = data.search;
     const searchText = data.searchText;
     const contentType = data.contentType
 
@@ -30,9 +27,7 @@ export const StickyHeader =()=>{
         dispatch({type:SET_NAV, payload: value})
     }
 
-    const setSearch=(value:string)=>{
-        dispatch({type:SET_SEARCH,payload:value})
-    }
+
     const setSearchText=(value:string)=>{
         dispatch({type:SET_SEARCH_TEXT,payload:value})
     }
@@ -44,6 +39,7 @@ export const StickyHeader =()=>{
     useEffect(()=>{
         toHome()
     },[searchText])
+
 
 
     return (
@@ -68,24 +64,22 @@ export const StickyHeader =()=>{
 
                     }
 
-
                 </div>
-                <img src={logo} alt={'vera film logo'} className={style.logo}/>
                 <div className={style.search_container}>
 
                     <span className="material-symbols-outlined search_icon">search</span>
                     <input
-                        placeholder={`search by ${search}`}
+                        placeholder={`search film db`}
                         onChange={(e)=>setSearchText(e.target.value)}
                     />
 
-                    <select value={search} onChange={(e)=>setSearch(e.target.value)}>
-                        <option value={'title'}>Title</option>
-                        <option value={'director'}>Director</option>
-                        <option value={'year'}>Year</option>
-                        <option value={'review'}>Review</option>
-                </select>
+                    <button> search
+                </button>
             </div>
+                <button onClick={()=>navigate("/new")}
+                        style={{background:"#0174d8", padding: '13px 15px', color:"black", borderRadius: '6px', fontWeight: '500', border: 'none'}}>New Film</button>
+                <button onClick={()=>navigate("/")}
+                        style={{background:"#0174d8", padding: '13px 15px', color:"black", borderRadius: '6px', fontWeight: '500', border: 'none', marginLeft: '10px'}}>All Film</button>
 
 
                 <select className={style.media_type} value={contentType} onChange={ e => setContentType(e.target.value)}>

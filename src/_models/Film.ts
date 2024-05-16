@@ -4,6 +4,6 @@ export type Film = {
     title: string,
     director: string,
     review: string,
-    stars: number,
+    stars: string,
     year: number
 }

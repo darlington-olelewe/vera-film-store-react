@@ -1,6 +1,5 @@
 import {filmConstants} from "../_constants";
-import {InitialState} from "../_models/InitialState.ts";
-import {s} from "vite/dist/node/types.d-aGj9QkWt";
+import {InitialState} from "../_models";
 
 const {
     FETCH_PAGINATED_FILMS,
@@ -21,17 +20,18 @@ const initialState :InitialState = {
     paginatedFilms: [],
     filmPage: {
         currentPage: 1,
-        pageSize: 10,
+        pageSize: 12,
         totalPage: 10,
         totalRecords: 10
     },
     isNavOpen: false,
-    search: 'director',
+    search: 'title',
     searchText:'',
     contentType: 'json',
     creatingNewFilm: false,
     fetchingFilmById: false,
-    fetchFilmById: null
+    fetchFilmById: null,
+    loading: false,
 }
 
 function filmReducer(state = initialState, action : {type:string, payload:any}){
@@ -58,6 +58,8 @@ function filmReducer(state = initialState, action : {type:string, payload:any}){
             return {...state, filmPage: action.payload}
         case CREATING_NEW_FILM:
             return {...state, creatingNewFilm: action.payload}
+        case 'LOADING':
+            return {...state, loading: action.payload}
         default:
             return state
     }

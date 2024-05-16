@@ -11,5 +11,6 @@ export type InitialState = {
     creatingNewFilm:boolean,
     fetchingFilmById:boolean,
     fetchFilmById:Film | null,
-    searchText:string
+    searchText:string,
+    loading: false
 }

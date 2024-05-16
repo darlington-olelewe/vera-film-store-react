@@ -1,5 +1,5 @@
 import style from "./SingleFilmPage.module.css"
-import React, {FormEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Film} from "../../_models";
 import {filmActions} from "../../_actions";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,11 +9,12 @@ import {useNavigate, useParams} from "react-router-dom";
 export const SingleFilmPage=()=>{
 
     const {id} = useParams();
-    console.log(id)
+
 
     const dispatch = useDispatch();
-    const { createNewFilm, fetchSingleFilmById} = filmActions;
+    const { createNewFilm, fetchSingleFilmById, editFilmById, deleteFilmById} = filmActions;
     const data = useSelector(({filmState})=> filmState)
+    const contentType = data.contentType;
 
     const isLoading = data.fetchingFilmById;
     const filmSelected = data.fetchFilmById;
@@ -23,10 +24,8 @@ export const SingleFilmPage=()=>{
     const [loads, setLoads] = useState({editing:false, mode:'view'})
 
     const navigate = useNavigate();
-    const justNavigate=()=>{
-        navigate("/")
-    }
-    const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+
+    const handleChange=(e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)=>{
         const {name,value} = e.target;
         setFilm(prev => {
             return {
@@ -37,7 +36,8 @@ export const SingleFilmPage=()=>{
     }
 
     useEffect(()=>{
-        dispatch(fetchSingleFilmById(id))
+        // @ts-ignore
+        dispatch(fetchSingleFilmById(contentType,id))
     },[])
 
     useEffect(()=>{
@@ -53,9 +53,22 @@ export const SingleFilmPage=()=>{
 
     const justSubmit=(e:React.SyntheticEvent):void=>{
         e.preventDefault()
-        dispatch(createNewFilm(film, justNavigate))
-        // Argument dispatch is not assignable to parameter type unkown action REACT Typescript
+        // @ts-ignore
+        dispatch(createNewFilm(contentType,film, justNavigate))
+    }
 
+    const handleEdit=()=>{
+        const payload = film;
+        // @ts-ignore
+        dispatch(editFilmById(contentType,payload.id,payload))
+    }
+
+    const justNavigate=()=>{
+        navigate("/")
+    }
+    const handleDelete=(id:number | string)=>{
+        // @ts-ignore
+        dispatch(deleteFilmById(id,justNavigate))
     }
 
     return (
@@ -102,25 +115,7 @@ export const SingleFilmPage=()=>{
                     </div>
 
                     <div className={style.flex}>
-                        <div style={{width: "50%"}}>
-                            <label className={style.label}>Stars</label>
-                            <div>
-                                {loads.mode === 'view' &&
-                                    <p className={style.input}>{filmSelected?.stars}</p>
-                                }
-                                {loads.mode === 'edit' &&
-                                    <select value={film?.stars} onChange={handleChange} name={"stars"}
-                                            className={style.input}>
-                                        <option value={1}>1</option>
-                                        <option value={2}>2</option>
-                                        <option value={3}>3</option>
-                                        <option value={4}>4</option>
-                                        <option value={5}>5</option>
-                                    </select>
-                                }
-                            </div>
-                        </div>
-                        <div style={{width: "50%"}}>
+                        <div style={{width: "100%"}}>
                             <label className={style.label}>Year</label>
                             {loads.mode === 'view' &&
                                 <p className={style.input}>{filmSelected?.year}</p>
@@ -145,7 +140,27 @@ export const SingleFilmPage=()=>{
                             }
 
                         </div>
+                    </div>
 
+                    <div>
+                        <label className={style.label}>Review</label>
+                        {loads.mode === 'view' &&
+                            <textarea className={style.input} cols={25}
+                                      rows={2}
+                                      defaultValue={filmSelected?.stars}
+                                      readOnly={true}
+                            ></textarea>
+                        }
+                        {loads.mode === 'edit' &&
+                            <textarea name={"stars"}
+                                      value={film?.stars}
+                                      onChange={handleChange}
+                                      placeholder={"Enter your personal review"}
+                                      cols={25}
+                                      rows={2}
+                                      className={style.input}
+                            />
+                        }
                     </div>
 
                     <div>
@@ -169,33 +184,35 @@ export const SingleFilmPage=()=>{
                         }
                     </div>
                     {loads.mode === 'view' &&
-                    <button type={"button"}
-                            className={style.btn}
-                            onClick={()=> setLoads(prevState => {
-                                return {
-                                    ...prevState,
-                                    mode: 'edit'
-                                }
-                            })}
-                    >Change To Edit Mode</button>
+                        <button type={"button"}
+                                className={style.btn}
+                                onClick={() => setLoads(prevState => {
+                                    return {
+                                        ...prevState,
+                                        mode: 'edit'
+                                    }
+                                })}
+                        >Change To Edit Mode</button>
                     }
                     {loads.mode === 'edit' &&
-                    <button type={"button"}
-                            className={style.btn}
-                            onClick={()=> setLoads(prevState => {
-                                return {
-                                    ...prevState,
-                                    mode: 'view'
-                                }
-                            })}
-                    >Change To View Mode</button>
+                        <button type={"button"}
+                                className={style.btn}
+                                onClick={() => setLoads(prevState => {
+                                    return {
+                                        ...prevState,
+                                        mode: 'view'
+                                    }
+                                })}
+                        >Change To View Mode</button>
                     }
                     {isLoading && <ButtonLoading/>}
                     {(!isLoading && loads.mode === 'edit') &&
-                        <button type={"submit"} className={style.btn}>Edit Record</button>
+                        <button type={"button"} className={style.btn} onClick={handleEdit}>Edit Record</button>
                     }
                     {(!isLoading && loads.mode === 'view') &&
-                        <button type={"submit"} className={style.btn} style={{border:"solid 2px red", color:"darkred"}}>Delete Record</button>
+                        <button type={"button"} className={style.btn}
+                                onClick={()=>{handleDelete(film.id)}}
+                                style={{border: "solid 2px red", color: "darkred"}}>Delete Record</button>
                     }
                 </form>
             }

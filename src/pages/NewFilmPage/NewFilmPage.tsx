@@ -1,5 +1,5 @@
 import style from "./NewFilmPage.module.css"
-import React, {FormEvent, useState} from "react";
+import React, { useState} from "react";
 import {Film} from "../../_models";
 import {filmActions} from "../../_actions";
 import {useDispatch, useSelector} from "react-redux";
@@ -12,6 +12,7 @@ export const NewFilmPage=()=>{
     const { createNewFilm} = filmActions;
     const data = useSelector(({filmState})=> filmState)
     const isLoading = data.creatingNewFilm;
+    const contentType = data.contentType;
 
     const [film, setFilm] = useState<Film>({
         id:null,
@@ -19,14 +20,14 @@ export const NewFilmPage=()=>{
         review: '',
         director: '',
         year: 2024,
-        stars: 1
+        stars: ""
     })
 
     const navigate = useNavigate();
     const justNavigate=()=>{
         navigate("/")
     }
-    const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    const handleChange=(e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>)=>{
         const {name,value} = e.target;
         setFilm(prev => {
             return {
@@ -49,8 +50,8 @@ export const NewFilmPage=()=>{
 
     const justSubmit=(e:React.SyntheticEvent):void=>{
         e.preventDefault()
-        dispatch(createNewFilm(film, justNavigate))
-        // Argument dispatch is not assignable to parameter type unkown action REACT Typescript
+        // @ts-ignore
+        dispatch(createNewFilm(contentType,film, justNavigate))
 
     }
 
@@ -61,13 +62,14 @@ export const NewFilmPage=()=>{
 
                 <h3 className={style.h3}>Add film record</h3>
 
-                <div >
+                <div>
                     <label className={style.label}>Title</label>
                     <input name={"title"}
                            value={film.title}
                            onChange={handleChange}
                            placeholder={"Enter film title"}
                            className={style.input}
+                           required={true}
                     />
                 </div>
                 <div>
@@ -77,23 +79,12 @@ export const NewFilmPage=()=>{
                            onChange={handleChange}
                            placeholder={"Enter film director"}
                            className={style.input}
+                           required={true}
                     />
                 </div>
 
                 <div className={style.flex}>
-                    <div style={{width:"50%"}}>
-                        <label className={style.label}>Stars</label>
-                        <div>
-                            <select value={film.stars} onChange={handleChange} name={"stars"} className={style.input}>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div style={{width:"50%"}}>
+                    <div style={{width: "100%"}}>
                         <label className={style.label}>Year</label>
 
                         <select
@@ -115,7 +106,18 @@ export const NewFilmPage=()=>{
                     </div>
 
                 </div>
-
+                <div>
+                    <label className={style.label}>Review</label>
+                    <textarea name={"stars"}
+                              value={film.stars}
+                              onChange={handleChange}
+                              placeholder={"Enter starring actors"}
+                              cols={25}
+                              rows={3}
+                              className={style.input}
+                              required={true}
+                    />
+                </div>
                 <div>
                     <label className={style.label}>Review</label>
                     <textarea name={"review"}
@@ -125,6 +127,7 @@ export const NewFilmPage=()=>{
                               cols={25}
                               rows={7}
                               className={style.input}
+                              required={true}
                     />
                 </div>
 
